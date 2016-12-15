@@ -1,8 +1,6 @@
-# RedirectFollowGet
+# redirect_follow_get
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/redirect_follow_get`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`redirect_follow_get` is simple http get method which follows http redirect. It wraps `net/http` library.
 
 ## Installation
 
@@ -24,6 +22,34 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+```rb
+response = redirect_follow_get('http://google.com/')
+# => #<Net::HTTPOK 200 OK readbody=true>
+
+puts response.code
+# 200
+
+puts response.uri
+# http://www.google.co.jp/?gfe_rd=...
+
+puts response.body
+# <!DOCTYPE html>
+# <html>
+#   <head>
+#     <meta charset="utf-8">
+# ...
+
+```
+
+### Redirects limit
+
+You can limit the number of redirects with `limit:` option. **Default redirects limit is 10.**
+
+```rb
+response = redirect_follow_get('http://google.com/', limit: 1)
+# RedirectFollowGet::TooManyRedirects: too many HTTP redirects
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,10 +58,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/redirect_follow_get.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/toshimaru/redirect_follow_get.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
