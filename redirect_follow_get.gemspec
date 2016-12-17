@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Toshimaru"]
   spec.email         = ["me@toshimaru.net"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{redirect_follow_get is simple http get method which follows http redirect.}
+  spec.description   = %q{redirect_follow_get is simple http get method which follows http redirect.}
+  spec.homepage      = "https://github.com/toshimaru/redirect_follow_get"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
