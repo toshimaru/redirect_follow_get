@@ -8,7 +8,8 @@ end
 def redirect_follow_get(url, limit: 10)
   raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' if limit.zero?
 
-  case response = Net::HTTP.get_response(URI(url))
+  uri = URI(URI.escape(url))
+  case response = Net::HTTP.get_response(uri)
   when Net::HTTPSuccess
     response
   when Net::HTTPRedirection
