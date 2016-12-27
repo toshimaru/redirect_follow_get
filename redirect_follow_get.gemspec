@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Toshimaru"]
   spec.email         = ["me@toshimaru.net"]
 
-  spec.summary       = %q{redirect_follow_get is simple http get method which follows http redirect.}
-  spec.description   = %q{redirect_follow_get is simple http get method which follows http redirect.}
+  spec.summary       = %q{redirect_follow_get is simple http get method following redirect.}
+  spec.description   = %q{redirect_follow_get is simple http get method following redirect.}
   spec.homepage      = "https://github.com/toshimaru/redirect_follow_get"
   spec.license       = "MIT"
 
