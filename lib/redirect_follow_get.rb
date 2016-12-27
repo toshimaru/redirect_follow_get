@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'redirect_follow_get/version'
 require 'net/http'
 
