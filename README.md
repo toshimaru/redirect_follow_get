@@ -1,6 +1,6 @@
 # redirect_follow_get
 
-`redirect_follow_get` is simple http get method which follows http redirect. It wraps `net/http` library.
+`redirect_follow_get` is simple http get method following redirect. It wraps `net/http` library.
 
 ## Installation
 
@@ -20,28 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`redirect_follow_get` returns `Net::HTTPOK` when the request gets 200 response.
 
 ```rb
 response = redirect_follow_get('http://google.com/')
 # => #<Net::HTTPOK 200 OK readbody=true>
-
-puts response.code
-# 200
-
-puts response.uri
-# http://www.google.co.jp/?gfe_rd=...
-
-puts response.body
-# <!DOCTYPE html>
-# <html>
-#   <head>
-#     <meta charset="utf-8">
-# ...
-
 ```
 
-### Redirects limit
+```rb
+response.code
+# => "200"
+
+response.uri
+# => #<URI::HTTP http://www.google.co.jp/?gfe_rd=...>
+
+response.body
+# => "<!doctype html><html ...
+```
+
+### Redirection limit
 
 You can limit the number of redirects with `limit:` option. **Default redirects limit is 10.**
 
