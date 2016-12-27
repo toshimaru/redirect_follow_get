@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'redirect_follow_get/version'
+require 'addressable'
 require 'net/http'
 
 module RedirectFollowGet
@@ -9,7 +10,8 @@ end
 def redirect_follow_get(url, limit: 10)
   raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' if limit.zero?
 
-  uri = URI(URI.escape(url))
+  uri = url.ascii_only? ? URI.parse(url) : Addressable::URI.parse(url)
+
   case response = Net::HTTP.get_response(uri)
   when Net::HTTPSuccess
     response
