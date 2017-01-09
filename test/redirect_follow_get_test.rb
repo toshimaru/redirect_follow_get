@@ -5,6 +5,17 @@ class RedirectFollowGetTest < Minitest::Test
     refute_nil ::RedirectFollowGet::VERSION
   end
 
+  def test_return_200_without_redirect
+    r = redirect_follow_get("https://github.com")
+    assert_equal "200", r.code
+  end
+
+  def test_fail_return_200_without_redirect
+    assert_raises(RedirectFollowGet::TooManyRedirects) do
+      redirect_follow_get("https://github.com", limit: 0)
+    end
+  end
+
   def test_return_200_after_redirect
     r = redirect_follow_get("http://google.com/?q=test")
     assert_equal "200", r.code
