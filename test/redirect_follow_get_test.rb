@@ -13,7 +13,9 @@ class RedirectFollowGetTest < Minitest::Test
     refute_nil ::RedirectFollowGet::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_return_200
+    get "/"
+
+    assert_equal "Hello", last_response.body
   end
 end
