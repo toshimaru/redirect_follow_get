@@ -25,15 +25,11 @@ Or install it yourself as:
 ```rb
 response = redirect_follow_get('http://google.com/')
 # => #<Net::HTTPOK 200 OK readbody=true>
-```
 
-```rb
 response.code
 # => "200"
-
 response.uri
 # => #<URI::HTTP http://www.google.co.jp/?gfe_rd=...>
-
 response.body
 # => "<!doctype html><html ...
 ```
