@@ -1,18 +1,18 @@
 require 'test_helper'
 
 class RedirectFollowGetTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::RedirectFollowGet::VERSION
-  end
+  URI_WITHOUT_REDIRECT = "https://github.com/"
 
   def test_return_200_without_redirect
-    r = redirect_follow_get("https://github.com")
+    r = redirect_follow_get(URI_WITHOUT_REDIRECT)
+
     assert_equal "200", r.code
+    assert_equal URI_WITHOUT_REDIRECT, r.uri.to_s
   end
 
   def test_fail_return_200_without_redirect
     assert_raises(RedirectFollowGet::TooManyRedirects) do
-      redirect_follow_get("https://github.com", limit: 0)
+      redirect_follow_get(URI_WITHOUT_REDIRECT, limit: 0)
     end
   end
 
@@ -36,5 +36,10 @@ class RedirectFollowGetTest < Minitest::Test
     assert_raises(RedirectFollowGet::TooManyRedirects) do
       redirect_follow_get("http://google.com/?q=テスト", limit: 1)
     end
+  end
+
+  def test_return_404
+    r = redirect_follow_get(URI_WITHOUT_REDIRECT + "404-not-found-path")
+    assert_equal "404", r.code
   end
 end
