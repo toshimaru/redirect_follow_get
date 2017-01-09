@@ -42,4 +42,17 @@ class RedirectFollowGetTest < Minitest::Test
     r = redirect_follow_get(URI_WITHOUT_REDIRECT + "404-not-found-path")
     assert_equal "404", r.code
   end
+
+  def test_return_200_with_query_param
+    uri = "https://www.instagram.com/p/BPBe5kOABuk/?taken-by=instagram"
+    r = redirect_follow_get(uri)
+    assert_equal "200", r.code
+  end
+
+  # FIXME: dont know why I got 404
+  def test_return_200_with_query_param2
+    uri = "https://www.instagram.com/p/BPBe5kOABuk/?tagged"
+    r = redirect_follow_get(uri)
+    assert_equal "200", r.code
+  end
 end
