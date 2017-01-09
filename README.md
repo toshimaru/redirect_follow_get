@@ -1,5 +1,9 @@
 # redirect_follow_get
 
+[![Build Status](https://travis-ci.org/toshimaru/redirect_follow_get.svg?branch=master)](https://travis-ci.org/toshimaru/redirect_follow_get)
+[![Gem Version](https://badge.fury.io/rb/redirect_follow_get.svg)](https://badge.fury.io/rb/redirect_follow_get)
+[![codecov](https://codecov.io/gh/toshimaru/redirect_follow_get/branch/master/graph/badge.svg)](https://codecov.io/gh/toshimaru/redirect_follow_get)
+
 `redirect_follow_get` is simple http get method following redirect. It wraps `net/http` library.
 
 ## Installation
@@ -25,15 +29,11 @@ Or install it yourself as:
 ```rb
 response = redirect_follow_get('http://google.com/')
 # => #<Net::HTTPOK 200 OK readbody=true>
-```
 
-```rb
 response.code
 # => "200"
-
 response.uri
 # => #<URI::HTTP http://www.google.co.jp/?gfe_rd=...>
-
 response.body
 # => "<!doctype html><html ...
 ```
