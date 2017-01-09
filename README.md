@@ -1,5 +1,9 @@
 # redirect_follow_get
 
+[![Build Status](https://travis-ci.org/toshimaru/redirect_follow_get.svg?branch=master)](https://travis-ci.org/toshimaru/redirect_follow_get)
+[![Gem Version](https://badge.fury.io/rb/redirect_follow_get.svg)](https://badge.fury.io/rb/redirect_follow_get)
+[![codecov](https://codecov.io/gh/toshimaru/redirect_follow_get/branch/master/graph/badge.svg)](https://codecov.io/gh/toshimaru/redirect_follow_get)
+
 `redirect_follow_get` is simple http get method following redirect. It wraps `net/http` library.
 
 ## Installation
