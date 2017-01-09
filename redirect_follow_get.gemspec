@@ -27,5 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "sinatra"
+
+  # Use sinatra 2.0 to avoid LoadError
+  # https://github.com/sinatra/sinatra/issues/1055
+  spec.add_development_dependency "sinatra", ">= 2.0.0.beta2"
 end
