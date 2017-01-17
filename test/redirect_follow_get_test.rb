@@ -49,9 +49,8 @@ class RedirectFollowGetTest < Minitest::Test
     assert_equal "200", r.code
   end
 
-  # FIXME: dont know why I got 404
   def test_return_200_with_query_param2
-    uri = "https://www.instagram.com/p/BPBe5kOABuk/?tagged"
+    uri = "https://www.instagram.com/p/BPBe5kOABuk/?tagged=タグ"
     r = redirect_follow_get(uri)
     assert_equal "200", r.code
   end
