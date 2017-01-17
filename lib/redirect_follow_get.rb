@@ -7,12 +7,8 @@ module RedirectFollowGet
   class TooManyRedirects < StandardError; end
 
   def self.parse_url(url)
-    return URI.parse(url) if url.ascii_only?
-    Addressable::URI.parse(url).normalize
-  rescue URI::InvalidURIError
-    # if InvalidURIError is raised in URI.parse(),
-    # fallback to Addressable::URI.parse() method.
-    Addressable::URI.parse(url).normalize
+    url = Addressable::URI.encode(url) unless url.ascii_only?
+    URI.parse(url)
   end
 end
 
