@@ -15,7 +15,7 @@ module RedirectFollowGet
 end
 
 def redirect_follow_get(url, limit: 10)
-  raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' if limit.zero?
+  raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' unless limit > 0
 
   uri = RedirectFollowGet.parse_url(url)
 
