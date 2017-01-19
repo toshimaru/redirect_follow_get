@@ -6,9 +6,11 @@ require 'net/http'
 module RedirectFollowGet
   class TooManyRedirects < StandardError; end
 
-  def self.parse_url(url)
-    url = Addressable::URI.encode(url) unless url.ascii_only?
-    URI.parse(url)
+  class << self
+    def parse_url(url)
+      url = Addressable::URI.parse(url).normalize.to_s unless url.ascii_only?
+      URI.parse(url)
+    end
   end
 end
 
