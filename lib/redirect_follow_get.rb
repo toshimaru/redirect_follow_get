@@ -6,18 +6,16 @@ require 'net/http'
 module RedirectFollowGet
   class TooManyRedirects < StandardError; end
 
-  def self.parse_url(url)
-    return URI.parse(url) if url.ascii_only?
-    Addressable::URI.parse(url).normalize
-  rescue URI::InvalidURIError
-    # if InvalidURIError is raised in URI.parse(),
-    # fallback to Addressable::URI.parse() method.
-    Addressable::URI.parse(url).normalize
+  class << self
+    def parse_url(url)
+      url = Addressable::URI.parse(url).normalize.to_s unless url.ascii_only?
+      URI.parse(url)
+    end
   end
 end
 
 def redirect_follow_get(url, limit: 10)
-  raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' if limit.zero?
+  raise RedirectFollowGet::TooManyRedirects, 'too many HTTP redirects' unless limit > 0
 
   uri = RedirectFollowGet.parse_url(url)
 
