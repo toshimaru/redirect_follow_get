@@ -59,5 +59,6 @@ class RedirectFollowGetTest < Minitest::Test
     uri = "http://はじめよう.みんな/"
     r = redirect_follow_get(uri)
     assert_equal "200", r.code
+    assert_equal "http://xn--p8j9a0d9c9a.xn--q9jyb4c/index.html", r.uri.to_s
   end
 end
